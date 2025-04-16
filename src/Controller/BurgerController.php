@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Burger;
+use App\Form\BurgerType;
 use App\Repository\BurgerRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use http\Exception\BadUrlException;
@@ -38,5 +39,17 @@ final class BurgerController extends AbstractController
         $em->remove($burger);
         $em->flush();
         return $this->redirectToRoute('burger');
+    }
+
+    #[Route('/burger/create', name: 'create')]
+    public function create(): Response
+    {
+        $burger = new Burger();
+        $form = $this->createForm(BurgerType::class, $burger);
+
+        return $this->render('burger/create.html.twig', [
+            'form' => $form->createView(),
+
+        ]);
     }
 }

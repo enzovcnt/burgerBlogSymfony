@@ -9,4 +9,8 @@
             <p>{{ burger.name }}</p>
             <a href="{{ path('one', {id: burger.id}) }}">Voir plus</a>
     {% endfor %}
+
+    <br>
+
+    <a href="{{ path('create')}}">Ajouter</a>
 {% endblock %}
