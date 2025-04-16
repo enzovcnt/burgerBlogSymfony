@@ -4,4 +4,8 @@
 
 {% block body %}
     <a href="{{ path('home') }}">Retour</a>
+    {% for burger in burgers %}
+        <br>
+            {{ burger.name }}
+    {% endfor %}
 {% endblock %}
