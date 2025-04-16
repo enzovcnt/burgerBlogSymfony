@@ -6,6 +6,7 @@
     <a href="{{ path('home') }}">Retour</a>
     {% for burger in burgers %}
         <br>
-            {{ burger.name }}
+            <p>{{ burger.name }}</p>
+            <a href="{{ path('one', {id: burger.id}) }}">Voir plus</a>
     {% endfor %}
 {% endblock %}

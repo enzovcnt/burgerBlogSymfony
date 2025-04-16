@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <h2>{{ burger.name }}</h2><br>
+    <p>{{ burger.description }}</p>
+    <a href="{{ path('burger') }}">Retour</a>
+
+{% endblock %}

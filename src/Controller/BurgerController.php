@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Burger;
 use App\Repository\BurgerRepository;
 use http\Exception\BadUrlException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -18,6 +19,14 @@ final class BurgerController extends AbstractController
         return $this->render('burger/index.html.twig', [
             'controller_name' => 'BurgerController',
             'burgers' => $burgers,
+        ]);
+    }
+
+    #[Route('/burger/{id}', name: 'one')]
+    public function show(Burger $burger): Response
+    {
+        return $this->render('burger/show.html.twig', [
+            'burger' => $burger,
         ]);
     }
 }
