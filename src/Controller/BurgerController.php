@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Burger;
 use App\Repository\BurgerRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use http\Exception\BadUrlException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -28,5 +29,14 @@ final class BurgerController extends AbstractController
         return $this->render('burger/show.html.twig', [
             'burger' => $burger,
         ]);
+    }
+
+    #[Route('/burger/delete/{id}', name: 'delete')]
+    public function delete(Burger $burger, EntityManagerInterface $em): Response
+    {
+
+        $em->remove($burger);
+        $em->flush();
+        return $this->redirectToRoute('burger');
     }
 }
