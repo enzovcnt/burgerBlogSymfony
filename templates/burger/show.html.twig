@@ -6,5 +6,6 @@
     <p>{{ burger.description }}</p>
     <a href="{{ path('burger') }}">Retour</a>
     <a href="{{ path('delete', {id: burger.id}) }}">supp</a>
+    <a href="{{ path('edit', {id: burger.id}) }}">Editer</a>
 
 {% endblock %}

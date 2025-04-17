@@ -64,4 +64,24 @@ final class BurgerController extends AbstractController
 
         ]);
     }
+
+    #[Route('/burger/{id}/edit', name: 'edit', methods: ['GET', 'POST'])]
+    public function edit(Burger $burger, Request $request, EntityManagerInterface $manager): Response
+    {
+        if(!$burger)
+        {
+            return $this->redirectToRoute('burger');
+        }
+        $form = $this->createForm(BurgerType::class, $burger);
+        $form->handleRequest($request);
+        if($form->isSubmitted()){
+            $manager->persist($burger);
+            $manager->flush();
+            return $this->redirectToRoute('burger');
+        }
+
+        return $this->render('burger/edit.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
 }

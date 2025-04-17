@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <p>Editer</p>
+    {{ form_start(form) }}
+
+    {{ form_row(form.name) }}
+
+
+    {{ form_row(form.description) }}
+
+    <button type="submit">Ok</button>
+
+    {{ form_end(form) }}
+
+{% endblock %}
