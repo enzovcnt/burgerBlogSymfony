@@ -2,10 +2,18 @@
 
 {% block body %}
 
+    <p>Ajouter des choses</p>
     {{ form_start(form) }}
 
     {{ form_row(form.name) }}
 
+
+    {{ form_row(form.description) }}
+
+    <button type="submit">Ok</button>
+
     {{ form_end(form) }}
+
+
 
 {% endblock %}
